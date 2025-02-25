@@ -1,4 +1,6 @@
-# cpp06
+# CPP learning module 06 of 42 School
+
+![42](https://img.shields.io/static/v1?label=&labelColor=000000e&logo=42&message=project&color=000000&style=flate)
 
 ## Summary
 
