@@ -207,20 +207,24 @@ void	printConverted(e_type etype, std::string type){
 
 void	printFormat(std::string c, int i, float f, double d, int precision){
 	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << i << std::endl;
+	if (d > 2147483647 || d < -2147483648)
+		std::cout << "int: " << "Impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
 	std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f" << std::endl;
 	std::cout << std::fixed << std::setprecision(precision) << "double: " << d << std::endl;
 }
 
 void	fromChar(std::string str){
-	(void)str;
-	// printFormat(str, str + );
+	std::cout << "char: " << str << std::endl;
+	std::cout << "int: " << "Impossible" << std::endl;
+	std::cout << "float: " << "Impossible" << std::endl;
+	std::cout << "double: " << "Impossible" << std::endl;
 }
 
 void	fromInt(std::string str){
 	int i = std::atoi(str.c_str());
-	if (i < -9 || i > 9)
-		str = "impossible";
+	str = "Non displayable";
 	float f = static_cast<float>(i);
 	double d = static_cast<double>(i);
 	printFormat(str, i, f, d, 1);
@@ -237,10 +241,12 @@ void	fromFloat(std::string str){
 int	getPrecision(std::string str){ // calcule la precision pour l'affichage des double
 	int precision = 1;
 	size_t len = detectChar(str, 'e');
-	if (len == 0)
+	if (len == str.length() - 1)
+		return (1);
+	if (len == 0 || str[len+1] != '-')
 		return (1);
 	std::string newstr;
-	if (str[len+1] == '+' || str[len+1] == '-')
+	if (str[len+1] == '-')
 		newstr = str.substr(len + 2);
 	else
 		newstr = str.substr(len + 1);
@@ -250,15 +256,24 @@ int	getPrecision(std::string str){ // calcule la precision pour l'affichage des 
 
 void	fromDouble(std::string str){
 	double d = std::atof(str.c_str());
-	str = "*";
 	int i = static_cast<int>(d);
 	float f = static_cast<float>(d);
-	std::cout << RED << getPrecision(str) << WHITE << std::endl;
-	printFormat(str, i, f, d, getPrecision(str));
+	int pre = getPrecision(str);
+	str = "*";
+	printFormat(str, i, f, d, pre);
 }
 
 void	fromSpecial(std::string str){
-	(void)str;
+	if (str == "nanf")
+		str = "nan";
+	else if (str == "+inff")
+		str = "+inf";
+	else if (str == "-inff")
+		str = "-inf";
+	std::cout << "char: " << "Impossible" << std::endl;
+	std::cout << "int: " << "Impossible" << std::endl;
+	std::cout << "float: " << str << "f" <<  std::endl;
+	std::cout << "double: " << str << std::endl;
 }
 
 void	fromOther(std::string str){
