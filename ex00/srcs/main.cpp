@@ -1,8 +1,14 @@
 #include "../includes/ScalarConverter.hpp"
 
-int main () {
+void	ft_error(std::string str){
+	std::cerr << RED << str << WHITE << std::endl;
+}
+
+int main (int ac, char **av) {
+	if (ac != 2)
+		return (ft_error("Not enough args"), 0);
 	ScalarConverter test;
-	std::string s = "coucou";
+	std::string s = av[1];
 	try {
 		test.convert(s);
 	}catch (std::exception &s){
