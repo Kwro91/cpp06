@@ -40,7 +40,5 @@ class ScalarConverter {
 	void			fromFloat(std::string str);
 	void			fromDouble(std::string str);
 	void			fromSpecial(std::string str);
-	void			fromOther(std::string str);
-
 
 #endif

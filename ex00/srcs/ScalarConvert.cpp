@@ -27,7 +27,7 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &s){
 
 void	ScalarConverter::convert(std::string type){
 	_etype = findType(type);
-	printType(_etype);
+	// printType(_etype); //for test purpose only
 	printConverted(_etype, type);
 }
 
@@ -136,47 +136,47 @@ int	isSpecial(std::string str){
 	return (0);
 }
 
-void	printType(e_type etype){
-	std::string str;
-	if (etype == 0)
-		str = CHAR;
-	switch (etype)
-	{
-	case 0:
-		str = "CHAR";
-		break;
-	case 1:
-		str = "INT";
-		break;
-	case 2:
-		str = "FLOAT";
-		break;
-	case 3:
-		str = "DOUBLE";
-		break;
-	case 4:
-		str = "SPECIAL";
-		break;
-	default:
-		str = "OTHER";
-	}
-	std::cout << GREEN << "Type is " << str << WHITE << std::endl;
-}
+// void	printType(e_type etype){
+// 	std::string str;
+// 	if (etype == 0)
+// 		str = CHAR;
+// 	switch (etype)
+// 	{
+// 	case 0:
+// 		str = "CHAR";
+// 		break;
+// 	case 1:
+// 		str = "INT";
+// 		break;
+// 	case 2:
+// 		str = "FLOAT";
+// 		break;
+// 	case 3:
+// 		str = "DOUBLE";
+// 		break;
+// 	case 4:
+// 		str = "SPECIAL";
+// 		break;
+// 	default:
+// 		str = "OTHER";
+// 	}
+// 	std::cout << GREEN << "Type is " << str << WHITE << std::endl;
+// }
 
 e_type	findType(std::string type){
 	e_type etype = OTHER;
 
 	if (type.empty())
 		throw ScalarConverter::WrongTypeException();
-	if (isChar(type))
+	else if (isChar(type))
 		etype = CHAR;
-	if (isInt(type))
+	else if (isInt(type))
 		etype = INT;
-	if (isFloat(type))
+	else if (isFloat(type))
 		etype = FLOAT;
-	if (isDouble(type))
+	else if (isDouble(type))
 		etype = DOUBLE;
-	if (isSpecial(type))
+	else if (isSpecial(type))
 		etype = SPECIAL;
 	return (etype);
 }
@@ -201,44 +201,53 @@ void	printConverted(e_type etype, std::string type){
 		fromSpecial(type);
 		break;
 	default:
-		fromOther(type);
+		throw (ScalarConverter::WrongTypeException());
 	}
 }
 
-void	printFormat(std::string c, int i, float f, double d, int precision){
-	std::cout << "char: " << c << std::endl;
-	if (d > 2147483647 || d < -2147483648)
-		std::cout << "int: " << "Impossible" << std::endl;
+void	printFormat(char c, int i, float f, double d, int precision){
+	if (isprint(c))
+		std::cout << "char: " << c << std::endl;
 	else
-		std::cout << "int: " << i << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
+	// if (d > 2147483647 || d < -2147483648)
+	// 	std::cout << "int: " << "Impossible" << std::endl;
+	// else
+	std::cout << "int: " << i << std::endl;
 	std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f" << std::endl;
 	std::cout << std::fixed << std::setprecision(precision) << "double: " << d << std::endl;
 }
 
 void	fromChar(std::string str){
-	std::cout << "char: " << str << std::endl;
-	std::cout << "int: " << "Impossible" << std::endl;
-	std::cout << "float: " << "Impossible" << std::endl;
-	std::cout << "double: " << "Impossible" << std::endl;
+	char c;
+	if (str[0] == '\'')
+		c = str[1];
+	else
+		c = str[0];
+	int i = static_cast<int>(c);
+	float f = static_cast<float>(c);
+	double d = static_cast<double>(c);
+	printFormat(c, i, f, d, 1);
+	
 }
 
 void	fromInt(std::string str){
 	int i = std::atoi(str.c_str());
-	str = "Non displayable";
+	char c = static_cast<char>(i);
 	float f = static_cast<float>(i);
 	double d = static_cast<double>(i);
-	printFormat(str, i, f, d, 1);
+	printFormat(c, i, f, d, 1);
 }
 
 void	fromFloat(std::string str){
 	float f = std::atof(str.c_str());
-	str = "*";
+	char c = static_cast<float>(f);
 	int i = static_cast<int>(f);
 	double d = static_cast<double>(f);
-	printFormat(str, i, f, d, 1);
+	printFormat(c, i, f, d, 1);
 }
 
-int	getPrecision(std::string str){ // calcule la precision pour l'affichage des double
+int	getPrecision(std::string str){ // calculate precision for prcalcule la precision pour l'affichage des doubleint of double
 	int precision = 1;
 	size_t len = detectChar(str, 'e');
 	if (len == str.length() - 1)
@@ -256,11 +265,11 @@ int	getPrecision(std::string str){ // calcule la precision pour l'affichage des 
 
 void	fromDouble(std::string str){
 	double d = std::atof(str.c_str());
+	char c = static_cast<char>(d);
 	int i = static_cast<int>(d);
 	float f = static_cast<float>(d);
 	int pre = getPrecision(str);
-	str = "*";
-	printFormat(str, i, f, d, pre);
+	printFormat(c, i, f, d, pre);
 }
 
 void	fromSpecial(std::string str){
@@ -274,8 +283,4 @@ void	fromSpecial(std::string str){
 	std::cout << "int: " << "Impossible" << std::endl;
 	std::cout << "float: " << str << "f" <<  std::endl;
 	std::cout << "double: " << str << std::endl;
-}
-
-void	fromOther(std::string str){
-	(void)str;
 }
