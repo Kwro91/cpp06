@@ -7,10 +7,9 @@ void	ft_error(std::string str){
 int main (int ac, char **av) {
 	if (ac != 2)
 		return (ft_error("Not enough args"), 0);
-	ScalarConverter test;
 	std::string s = av[1];
 	try {
-		test.convert(s);
+		ScalarConverter::convert(s);
 	}catch (std::exception &s){
 		std::cerr << YELLOW << s.what() << std::endl;
 	}

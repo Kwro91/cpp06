@@ -17,11 +17,9 @@ enum e_type {
 };
 
 class ScalarConverter {
-	private:
-		static e_type	_etype;
 	public:
 		ScalarConverter();
-		~ScalarConverter();
+		virtual ~ScalarConverter() = 0;
 		ScalarConverter(const ScalarConverter &s);
 		ScalarConverter &operator=(const ScalarConverter &s);
 
@@ -32,13 +30,19 @@ class ScalarConverter {
 			const char	*what() const throw();
 		};
 	};
-	e_type			findType(std::string type);
-	void			printType(e_type etype);
-	void			printConverted(e_type etype, std::string type);
-	void			fromChar(std::string str);
-	void			fromInt(std::string str);
-	void			fromFloat(std::string str);
-	void			fromDouble(std::string str);
-	void			fromSpecial(std::string str);
 
+	int				isChar(const std::string &str);
+	int				isInt(const std::string &str);
+	int				isFloat(const std::string &str);
+	int				isDouble(const std::string &str);
+	int				isSpecial(const std::string &str);
+	e_type			findType(std::string type);
+	void			printConverted(e_type etype, std::string type);
+	void			fromChar(const std::string &str);
+	void			fromInt(const std::string &str);
+	void			fromFloat(const std::string &str);
+	void			fromDouble(const std::string &str);
+	void			fromSpecial(const std::string &str);
+	
+	void			printType(e_type etype); //for test only
 #endif
