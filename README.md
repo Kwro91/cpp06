@@ -18,7 +18,7 @@ All the C++ modules are based on C++98.
 
 This project focuses on `type conversion` & `cast`: 
 
-[Cast in c++](https://www.geeksforgeeks.org/casting-operators-in-cpp/) that includes the following type of cast & `const_cast` that we  don't need here.
+[cast in c++](https://www.geeksforgeeks.org/casting-operators-in-cpp/) that includes the following type of cast & `const_cast` that we  don't need here.
  
 [static_cast](https://learn.microsoft.com/fr-fr/cpp/cpp/static-cast-operator?view=msvc-170) that `safely convert` few `basic types` at the compilation. (int -> double, ...)
  
