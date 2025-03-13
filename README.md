@@ -33,7 +33,7 @@ that do not any conversion but `just read` the bits how they are disposed in the
 Create a `ScalarConverter` Class that can't be instanciable. It's used to know what type is a given string and cast it in char int float & double using the `static_cast`.
 ### ex01
 Create a `Serializer` Class that can't be instanciable.
-It's used to cast a `Data *` from Data struct into a `uintptr_t` using  `reinterpret_cast` from `serialize()` method. There is also a `deserialize` method that re-cast into a `Data *` and return it.
+It's used to cast a `Data *` from Data struct into a [`uintptr_t`](https://stackoverflow.com/questions/1845482/what-is-the-uintptr-t-data-type) using  `reinterpret_cast` from `serialize()` method. There is also a `deserialize` method that re-cast into a `Data *` and return it.
 ### ex02
 `dynamic_cast`
 ## Links
