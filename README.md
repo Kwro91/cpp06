@@ -38,3 +38,9 @@ Create a `ScalarConverter` Class that can't be instanciable. It's used to know w
 ## Links
 
 ## Screenshot
+
+### `Exercice 00`:
+<img width="684" alt="Run" src="img/ex00.png">
+
+### `Exercice 01`:
+<img width="684" alt="Run" src="img/ex01.png">
