@@ -283,15 +283,10 @@ void	fromDouble(const std::string &str){
 }
 
 void	fromSpecial(const std::string &str){
-	std::string newstr = str;
-	if (str == "nanf")
-		newstr = "nan";
-	else if (str == "+inff")
-		newstr = "+inf";
-	else if (str == "-inff")
-		newstr = "-inf";
-	std::cout << "char: " << "impossible" << std::endl;
-	std::cout << "int: " << "impossible" << std::endl;
-	std::cout << "float: " << newstr << "f" <<  std::endl;
-	std::cout << "double: " << newstr << std::endl;
+	float f = std::atof(str.c_str());
+	double d = static_cast<double>(f);
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
 }
