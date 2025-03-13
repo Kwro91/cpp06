@@ -4,18 +4,20 @@
 #include "Color.hpp"
 #include <iostream>
 #include <exception>
+#include <stdint.h>
 
-class Data {
+struct Data {
+		int _id;
+		std::string _name;
 
-	private :
-
-	
-	public :
 		Data();
-		virtual ~Data() = 0;
-		Data(const Data &s);
-		Data &operator=(const Data &s);
-		
+		Data(int id, std::string name);
+		~Data();
+		Data(const Data &d);
+		Data &operator=(const Data &d);
 };
+
+std::ostream &operator<<(std::ostream &out, const Data &d);
+
 
 #endif

@@ -2,6 +2,7 @@ NAME = serialize
 
 SRC = srcs/main.cpp\
 	srcs/Serializer.cpp\
+	srcs/Data.cpp\
 
 	
 CC =  c++
