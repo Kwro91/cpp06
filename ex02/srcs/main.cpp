@@ -8,7 +8,7 @@ int main (){
 		identify(p);
 		identify(t);
 		delete p;
-		std::cout << GREEN << "///////////////////TRY_A_B_C////////////////////////" << WHITE << std::endl;
+		std::cout << GREEN << "///////////////////TRY_A_B_C_NULL////////////////////////" << WHITE << std::endl;
 	}
 	catch (std::exception &e){
 		(void)e;
@@ -49,5 +49,17 @@ int main (){
 	catch (std::exception &e){
 		(void)e;
 	}
+//////////////////////////////////////////////////////////////
+try{ //generate NULL and test identify
+	Base *p = NULL;
+	Base &t = *p;
+	identify(p);
+	identify(t);
+	delete p;
+	std::cout << std::endl;
+}
+catch (std::exception &e){
+	(void)e;
+}
 	return (0);
 }

@@ -16,11 +16,6 @@ Base	*generate(void){
 }
 
 void	identify(Base *p){ //dynamic_cast send a nullptr when failed using a pointer
-	if (p == NULL)
-	{
-		std::cerr << RED << "Error: *p is NULL" << WHITE << std::endl;
-		return ;
-	}
 	if (dynamic_cast<A*>(p))
 		std::cout << "*Type is A" << std::endl;
 	else if (dynamic_cast<B*>(p))
@@ -49,7 +44,7 @@ void	identify(Base &p){ //dynamic_cast send an exception when failed used with r
 		std::cout << "&Type is C" << std::endl;
 		return ;
 	} catch (std::exception &e){
-		std::cout << "&Type is Unknown" << std::endl;
-		std::cerr << YELLOW << e.what() << WHITE << std::endl;
+		std::cout << "&Type is " << RED << "Unknown" << WHITE << std::endl;
+		std::cerr << YELLOW << "Exception: " << e.what() << WHITE << std::endl;
 	}
 }
