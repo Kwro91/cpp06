@@ -46,19 +46,19 @@ In case of failed conversion, dynamic_cast return a `nullptr`if you use a `point
 
 ## Links
 You can find my other CPP modules here :
-- [CPP_00]()
+- [CPP_00](https://github.com/Kwro91/cpp00) Class, Namespaces, Member function, Static, Const & basics.
 
-- [CPP_01]()
+- [CPP_01](https://github.com/Kwro91/cpp01) Memory allocation, Pointer & Reference, Switch case.
 
-- [CPP_02]()
+- [CPP_02](https://github.com/Kwro91/cpp02) Polymorphism (overloading), Canonical form.
 
-- [CPP_03]()
+- [CPP_03](https://github.com/Kwro91/cpp03) Inheritance.
 
-- [CPP_04]()
+- [CPP_04](https://github.com/Kwro91/cpp04) Polymorphism (overriding), Derived class, Abstract class, Interface.
 
-- [CPP_05]()
+- [CPP_05](https://github.com/Kwro91/cpp05) : Try & catch, Exceptions.
 
-- [CPP_06]()
+- [CPP_06](https://github.com/Kwro91/cpp06) : Cast, Type conversion.
 ## Screenshot
 
 ### `Exercice 00`:
