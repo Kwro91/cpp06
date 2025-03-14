@@ -31,13 +31,34 @@ that do not any conversion but `just read` the bits how they are disposed in the
 
 ### ex00
 Create a `ScalarConverter` Class that can't be instanciable. It's used to know what type is a given string and cast it in char int float & double using the `static_cast`.
+
 ### ex01
 Create a `Serializer` Class that can't be instanciable.
 It's used to cast a `Data *` from Data struct into a [`uintptr_t`](https://stackoverflow.com/questions/1845482/what-is-the-uintptr-t-data-type) using  `reinterpret_cast` from `serialize()` method. There is also a `deserialize` method that re-cast into a `Data *` and return it.
-### ex02
-`dynamic_cast`
-## Links
 
+### ex02
+Create a `Base` class tjat just have a virtual destructor. Create also `A`, `B` & `C` class that inherit from Base.
+
+Then create 3 functions. `Base *generate(void)` that randomly create A B or C object and return it as a `Base *`.
+Then by using `dynamic_cast`, create 2 functions `void identify(Base *p)` & `void identify(Base &p)` and make them print the type of the parameter.
+
+In case of failed conversion, dynamic_cast return a `nullptr`if you use a `pointer (*)` & throw an `exception` if you use a `reference (&)`.
+
+## Links
+You can find my other CPP modules here :
+- [CPP_00]()
+
+- [CPP_01]()
+
+- [CPP_02]()
+
+- [CPP_03]()
+
+- [CPP_04]()
+
+- [CPP_05]()
+
+- [CPP_06]()
 ## Screenshot
 
 ### `Exercice 00`:
@@ -45,3 +66,6 @@ It's used to cast a `Data *` from Data struct into a [`uintptr_t`](https://stack
 
 ### `Exercice 01`:
 <img width="400" alt="Run" src="img/ex01.png">
+
+### `Exercice 01`:
+<img width="400" alt="Run" src="img/ex02.png">
