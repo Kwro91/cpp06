@@ -28,19 +28,19 @@ void	identify(Base *p){ //dynamic_cast send a nullptr when failed using a pointe
 
 void	identify(Base &p){ //dynamic_cast send an exception when failed used with reference
 	try {
-		dynamic_cast<A&>(p);
+		A test = dynamic_cast<A&>(p);
 		std::cout << "&Type is A" << std::endl;
 		return ;
 	} catch (std::exception &e){
 	}
 	try {
-		dynamic_cast<B&>(p);
+		B test = dynamic_cast<B&>(p);
 		std::cout << "&Type is B" << std::endl;
 		return ;
 	} catch (std::exception &e){
 	}
 	try {
-		dynamic_cast<C&>(p);
+		C test = dynamic_cast<C&>(p);
 		std::cout << "&Type is C" << std::endl;
 		return ;
 	} catch (std::exception &e){

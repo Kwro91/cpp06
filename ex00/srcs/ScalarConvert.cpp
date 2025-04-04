@@ -24,12 +24,26 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &s){
 }
 
 void	ScalarConverter::convert(std::string type){
+	if (!checkAlpha(type))
+		throw ScalarConverter::WrongTypeException();
 	e_type etype = findType(type);
 	// printType(_etype); //for test purpose only
 	printConverted(etype, type);
 }
 
 /////////////////////////////////////
+
+int checkAlpha(std::string type){
+	int count = 0;
+	for (size_t i = 0 ; i < type.length() ; i++)
+	{
+		if (isalpha(type[i]))
+			count++;
+	}
+	if (count > 1)
+		return (0);
+	return (1);
+}
 
 e_type	findType(std::string type){
 	e_type etype = OTHER;
@@ -71,9 +85,9 @@ int		isInt(const std::string &type){
 			return (0);
 		i++;
 	}
-	// long nb = std::atol(type.c_str());
-	// if (nb > 2147483647 || nb < -2147483648)
-	// 	return (0);
+	double test = std::atof(type.c_str());
+	if (test > 2147483647 || test < -2147483648)
+		throw ScalarConverter::WrongTypeException();
 	return (1);
 }
 

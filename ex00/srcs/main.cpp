@@ -6,7 +6,7 @@ void	ft_error(std::string str){
 
 int main (int ac, char **av) {
 	if (ac != 2)
-		return (ft_error("Not enough args"), 0);
+		return (ft_error("Error: one arg required. (./converter [input])"), 0);
 	std::string s = av[1];
 	try {
 		ScalarConverter::convert(s);

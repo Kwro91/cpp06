@@ -56,7 +56,6 @@ try{ //generate NULL and test identify
 	identify(p);
 	identify(t);
 	delete p;
-	std::cout << std::endl;
 }
 catch (std::exception &e){
 	(void)e;

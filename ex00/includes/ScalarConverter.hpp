@@ -31,6 +31,7 @@ class ScalarConverter {
 		};
 	};
 
+	int				checkAlpha(std::string type);
 	int				isChar(const std::string &str);
 	int				isInt(const std::string &str);
 	int				isFloat(const std::string &str);
